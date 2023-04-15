@@ -6,6 +6,7 @@ Also works with the Lightning Modules!
 
 # Installation
 
+```pip install cosine-warmup```
 ```pip install 'git+https://github.com/santurini/cosine-annealing-linear-warmup'```
 
 # Usage
