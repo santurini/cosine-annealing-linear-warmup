@@ -1,3 +1,8 @@
+# Cosine Annealing Scheduler with Linear Warmup
+Implementation of a Cosine Annealing Scheduler with Linear Warmup in PyTorch. \
+It has support for multiple parameters groups and minimum target learning rates. \
+Also works with the Lightning Modules!
+
 # Installation
 ```pip install 'git+https://github.com/santurini/CosineAnnealingLinearWarmup'```
 
