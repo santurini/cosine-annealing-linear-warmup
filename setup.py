@@ -2,4 +2,4 @@
 
 import setuptools
 
-setuptools.setup(name='cosine_warmup')
+setuptools.setup(name='cosine-warmup')
