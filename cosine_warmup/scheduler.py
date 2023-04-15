@@ -1,3 +1,12 @@
+r"""Cosine Annealing Linear Warmup
+This module implements the Cosine Annealing Linear Warmup Scheduler in PyTorch.
+Original:
+    https://paperswithcode.com/method/cosine-annealing
+References:
+    | https://pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.CosineAnnealingLR.html
+    | https://github.com/katsura-jp/pytorch-cosine-annealing-with-warmup
+"""
+
 import math
 
 from typing import Union, List
