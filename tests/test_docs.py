@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import doctest
-import cosine_warmup
+import .cosine_warmup
 import unittest
 
 
