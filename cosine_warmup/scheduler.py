@@ -29,10 +29,8 @@ class CosineAnnealingLinearWarmup(_LRScheduler):
         :param min_lrs_pow: power of 10 factor of decrease of max_lrs (ex: min_lrs_pow=2, min_lrs = max_lrs * 10 ** -2
         '''
         assert warmup_steps < first_cycle_steps, "Warmup steps should be smaller than first cycle steps"
-        assert (
-            (min_lrs_pow is None and min_lrs is not None) or (min_lrs_pow is not None and min_lrs is None), 
+        assert min_lrs_pow is None and min_lrs is not None or min_lrs_pow is not None and min_lrs is None, \
             "Only one of min_lrs and min_lrs_pow should be specified"
-        )
         
         # inferred from optimizer param_groups
         max_lrs = [g["lr"] for g in optimizer.state_dict()['param_groups']]
@@ -41,12 +39,10 @@ class CosineAnnealingLinearWarmup(_LRScheduler):
             min_lrs = [i * (10 ** -min_lrs_pow) for i in max_lrs]
 
         if min_lrs:
-            assert (
-                len(min_lrs)==len(max_lrs),
+            assert len(min_lrs)==len(max_lrs),\
                 "The length of min_lrs should be the same as max_lrs, but found {} and {}".format(
                     len(min_lrs), len(max_lrs)
                 )
-            )
 
         self.first_cycle_steps = first_cycle_steps  # first cycle step size
         self.cycle_mult = cycle_mult  # cycle steps magnification
@@ -62,16 +58,13 @@ class CosineAnnealingLinearWarmup(_LRScheduler):
 
         super().__init__(optimizer, last_epoch)
 
-        assert (
-            len(optimizer.param_groups) == len(max_lrs),
+        assert len(optimizer.param_groups) == len(max_lrs),\
             "Expected number of max learning rates provided ({}) to be the same as the number of groups parameters ({})".format(
                 len(max_lrs), len(optimizer.param_groups))
-        )
-        assert (
-            len(optimizer.param_groups) == len(min_lrs),
+        
+        assert len(optimizer.param_groups) == len(min_lrs),\
             "Expected number of min learning rates provided ({}) to be the same as the number of groups parameters ({})".format(
                 len(max_lrs), len(optimizer.param_groups))
-        )
 
         # set learning rate min_lr
         self.init_lr()
