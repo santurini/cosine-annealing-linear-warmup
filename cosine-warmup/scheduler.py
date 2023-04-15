@@ -19,7 +19,7 @@ class CosineAnnealingLinearWarmup(_LRScheduler):
             self,
             optimizer: torch.optim.Optimizer,
             first_cycle_steps: int,
-            min_lrs: Union[float, List[float]] = None,
+            min_lrs: List[float] = None,
             cycle_mult: float = 1.,
             warmup_steps: int = 0,
             gamma: float = 1.,
