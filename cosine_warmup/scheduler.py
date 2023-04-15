@@ -29,9 +29,11 @@ class CosineAnnealingLinearWarmup(_LRScheduler):
         :param min_lrs_pow: power of 10 factor of decrease of max_lrs (ex: min_lrs_pow=2, min_lrs = max_lrs * 10 ** -2
         '''
         assert warmup_steps < first_cycle_steps, "Warmup steps should be smaller than first cycle steps"
-        assert min_lrs_pow is None and min_lrs is not None, "Only one of min_lrs and min_lrs_pow should be specified"
-        assert min_lrs_pow is None and min_lrs is not None, "Only one of min_lrs and min_lrs_pow should be specified"
-
+        assert (
+            (min_lrs_pow is None and min_lrs is not None) or (min_lrs_pow is not None and min_lrs is None), 
+            "Only one of min_lrs and min_lrs_pow should be specified"
+        )
+        
         # inferred from optimizer param_groups
         max_lrs = [g["lr"] for g in optimizer.state_dict()['param_groups']]
 
