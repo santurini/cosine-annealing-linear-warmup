@@ -4,7 +4,7 @@ It has support for multiple parameters groups and minimum target learning rates.
 Also works with the Lightning Modules!
 
 # Installation
-```pip install 'git+https://github.com/santurini/CosineAnnealingLinearWarmup'```
+```pip install 'git+https://github.com/santurini/cosine-annealing-linear-warmup'```
 
 # Usage
 
