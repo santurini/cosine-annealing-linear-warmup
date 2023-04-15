@@ -1,9 +1,11 @@
 # Cosine Annealing Scheduler with Linear Warmup
+
 Implementation of a Cosine Annealing Scheduler with Linear Warmup and Restarts in PyTorch. \
 It has support for multiple parameters groups and minimum target learning rates. \
 Also works with the Lightning Modules!
 
 # Installation
+
 ```pip install 'git+https://github.com/santurini/cosine-annealing-linear-warmup'```
 
 # Usage
@@ -11,6 +13,7 @@ Also works with the Lightning Modules!
 It is important to specify the parameters groups in the optimizer instantiation as the learning rates are directly inferred from the wrapped optimizer.
 
 #### Example: Multiple groups
+
 ```
 from cosine_warmup import CosineAnnealingLinearWarmup
 
@@ -40,6 +43,7 @@ scheduler = CosineAnnealingLinearWarmup(
 ```
 
 #### Example: Single groups
+
 ```
 from cosine_linear_warmup import CosineAnnealingLinearWarmup
 
@@ -65,4 +69,5 @@ scheduler = CosineAnnealingLinearWarmup(
 ```
 
 # Visual Example
+
 ![Unknown-2](https://user-images.githubusercontent.com/91251307/232208248-a1aa9546-39ff-4456-936a-4953a3cb0d27.png)
