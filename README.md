@@ -1,6 +1,3 @@
-# Cosine Annealing Linear Warmup
-Cosine Annealing scheduler with linear warmup and support for multiple parameters groups.
-
 # Installation
 ```pip install 'git+https://github.com/santurini/CosineAnnealingLinearWarmup'```
 
@@ -10,7 +7,7 @@ It is important to specify the parameters groups in the optimizer instantiation 
 
 #### Example: Multiple groups
 ```
-from cosine_linear_warmup import CosineAnnealingLinearWarmup
+from cosine_warmup import CosineAnnealingLinearWarmup
 
 optimizer = torch.optim.Adam([
     {"params": first_group_params, "lr": 1e-3},
