@@ -44,10 +44,10 @@ class CosineAnnealingLinearWarmup(_LRScheduler):
         # inferred from optimizer param_groups
         max_lrs = [g["lr"] for g in optimizer.state_dict()['param_groups']]
 
-        if min_lrs_pow:
+        if min_lrs_pow is not None:
             min_lrs = [i * (10 ** -min_lrs_pow) for i in max_lrs]
 
-        if min_lrs:
+        if min_lrs is not None:
             assert len(min_lrs)==len(max_lrs),\
                 "The length of min_lrs should be the same as max_lrs, but found {} and {}".format(
                     len(min_lrs), len(max_lrs)
@@ -67,11 +67,11 @@ class CosineAnnealingLinearWarmup(_LRScheduler):
 
         super().__init__(optimizer, last_epoch)
 
-        assert len(optimizer.param_groups) == len(max_lrs),\
+        assert len(optimizer.param_groups) == len(self.max_lrs),\
             "Expected number of max learning rates provided ({}) to be the same as the number of groups parameters ({})".format(
                 len(max_lrs), len(optimizer.param_groups))
         
-        assert len(optimizer.param_groups) == len(min_lrs),\
+        assert len(optimizer.param_groups) == len(self.min_lrs),\
             "Expected number of min learning rates provided ({}) to be the same as the number of groups parameters ({})".format(
                 len(max_lrs), len(optimizer.param_groups))
 
