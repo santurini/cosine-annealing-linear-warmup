@@ -48,9 +48,9 @@ scheduler = CosineAnnealingLinearWarmup(
 #### Example: Single groups
 
 ```
-from cosine_linear_warmup import CosineAnnealingLinearWarmup
+from cosine_warmup import CosineAnnealingLinearWarmup
 
-optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
+optimizer = torch.optim.Adam([{"params": model.parameters(), "lr": 1e-3}])
 
 scheduler = CosineAnnealingLinearWarmup(
     optimizer = optimizer,
